@@ -29,12 +29,12 @@ if(!window.location.hash){
       
       const deployedNetwork = SimpleStorage.networks[networkId];
       const instance = new web3.eth.Contract(
-        SimpleStorage.abi,
+        SimpleStorage.abi,SimpleStorage.address,
         deployedNetwork && deployedNetwork.address,
       );
 
-      instance.options.address = ""
-        
+      instance.options.address = "0x44295683e5709A3a87ab75Dd8e7a065390647c53"
+
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3: web3, account: accounts[0], SimpleStorageInstance: instance });
@@ -69,7 +69,7 @@ if(!window.location.hash){
         
         
           {this.state.account}
-          {this.state.isOwner?<a>yes</a>:<a>no</a>
+          {this.state.isOwner?<div>yes you are the owner</div>:<div>no you are not the owner</div>
           }
         
       </div>

@@ -8,7 +8,7 @@ contract SimpleStorage {
   bool start;
   bool end;
 // Constructor
-function SimpleStorage() {
+function SimpleStorage() public {
    owner = msg.sender;
    candidateCount = 0;
    voterCount = 0;

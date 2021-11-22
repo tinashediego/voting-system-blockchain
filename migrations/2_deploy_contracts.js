@@ -1,4 +1,4 @@
-var MasoomContract = artifacts.require("./MasoomContract.sol");
+var SimpleStorage = artifacts.require("./SimpleStorage.sol");
 module.exports = function(deployer) {
-deployer.deploy(MasoomContract);
+deployer.deploy(SimpleStorage);
 };

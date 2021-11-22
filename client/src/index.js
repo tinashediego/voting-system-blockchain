@@ -16,21 +16,17 @@ import Result from './components/Result';
 ReactDOM.render(
     <Router history={history}>
         <Switch>
-            <Route exact path="/" component={App}></Route>
-            <Route path="/AddCandidate" component={AddCandidate}></Route>
-            <Route path="/CandidateDetails" component={CandidateDetails}></Route>
-            <Route path="/RequestVoter" component={RequestVoter}></Route>
-            <Route path="/VerifyVoter" component={VerifyVoter}></Route>
-            <Route path="/Vote" component={Vote}></Route>
-            <Route path="/Admin" component={Admin}></Route>
-            <Route path="/Result" component={Result}></Route>
+            <Route exact path="/" component={App} />
+            <Route path="/AddCandidate" component={AddCandidate} />
+            <Route path="/CandidateDetails" component={CandidateDetails} />
+            <Route path="/RequestVoter" component={RequestVoter} />
+            <Route path="/VerifyVoter" component={VerifyVoter} />
+            <Route path="/Vote" component={Vote} />
+            <Route path="/Admin" component={Admin} />
+            <Route path="/Result" component={Result} />
             
         </Switch>
     </Router>,
     document.getElementById('root')
     );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

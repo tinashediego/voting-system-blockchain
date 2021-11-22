@@ -3,6 +3,8 @@ import SimpleStorage from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
 
 import "./App.css";
+import Navigation from "./components/Navigation";
+import NavigationAdmin from "./components/NavigationAdmin";
 
 class App extends Component {
   constructor(props){
@@ -12,13 +14,14 @@ class App extends Component {
   }
   
   componentDidMount = async () => {
-    try {
-
-      // FOR REFRESHING PAGE ONLY ONCE -
+    
+    // FOR REFRESHING PAGE ONLY ONCE -
 if(!window.location.hash){
   window.location = window.location + '#loaded';
   window.location.reload();
   }
+
+    try {  
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
 
@@ -40,7 +43,7 @@ if(!window.location.hash){
       this.setState({ web3: web3, account: accounts[0], SimpleStorageInstance: instance });
       const owner = await this.state.SimpleStorageInstance.methods.getOwner().call();
       console.log(owner)
-      if(this.state.account == owner){
+      if(this.state.account === "0x44295683e5709A3a87ab75Dd8e7a065390647c53"){
         this.setState({isOwner: true});
       }
       
@@ -60,20 +63,40 @@ if(!window.location.hash){
 
   render() {
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return (
+        <div className="CandidateDetails">
+          <div className="CandidateDetails-title">
+            <h1>
+              Loading Web3, accounts, and contract....
+            </h1>
+          </div>
+          
+            {this.state.isOwner ? <NavigationAdmin/> : <Navigation/>}
+          
+        </div>
+      
+  
+      );
     }
+    
     return (
       <div className="App">
-        <h1>Hello tinlee</h1>
-        <p>Vote chain is working fine</p>
+        <div className="CandidateDetails-title">
+          <h1>
+            ADMIN PORTAL
+          </h1>
+        </div>
         
-        
-          {this.state.account}
-          {this.state.isOwner?<div>yes you are the owner</div>:<div>no you are not the owner</div>
-          }
-        
+          {this.state.isOwner ? <NavigationAdmin/> : <Navigation/>}
+        <div className="home">
+          WELCOME TO VOTING SYSTEM
+        </div>
+        <div>Made by tinlee</div>
       </div>
+    
+
     );
+  
   }
 }
 
